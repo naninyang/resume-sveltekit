@@ -1,0 +1,525 @@
+
+.management-page
+  display: flex
+  flex-direction: column
+  background: fixed linear-gradient(225deg, #CD313A 0%, #000 37.55%, #000 57.70%, #0047A0 100%)
+  min-height: 100vh
+
+nav.nav
+  flex-flow: 1
+  display: flex
+  justify-content: center
+  backdrop-filter: saturate(1.8) blur(rem(20))
+  background-color: $rgba-background80
+  height: rem(52)
+
+  & ol
+    display: flex
+    justify-content: space-between
+
+    & > li
+      position: relative
+
+      &:nth-of-type(5)
+        & > ol
+          left: auto
+          right: 0
+
+      & p
+        display: flex
+        align-items: center
+        padding: 0 rem(25)
+        height: 100%
+        font-size: rem(16)
+        color: $hex-yellow
+
+      & > ol
+        position: absolute
+        top: calc(100% + rem(15))
+        left: 0
+        display: none
+        height: rem(52)
+        border-radius: rem(52)
+        backdrop-filter: saturate(1.8) blur(rem(20))
+        background-color: $rgba-yellow70
+
+        & a
+          white-space: nowrap
+          color: $rgba-dark70
+
+  & a, & button
+    padding: 0 rem(25)
+    height: 100%
+    font-size: rem(16)
+    color: $rgba-light70
+
+  & a
+    display: flex
+    align-items: center
+
+  & button
+    background-color: transparent
+
+main.container
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.content
+  padding: rem(125) rem(25)
+  &.essay
+    width: rem(770)
+
+.management-container
+  display: flex
+  flex-direction: column
+  gap: rem(50)
+  & h1
+    font-size: rem(32)
+    font-weight: 900
+    color: $hex-light
+  & fieldset
+    display: flex
+    flex-direction: column
+    gap: rem(50)
+
+.form-group
+  display: flex
+  flex-direction: column
+
+  & > div
+    display: flex
+    gap: rem(10)
+
+    & > div
+      @include col
+
+.field-group
+  display: flex
+  flex-direction: column
+  gap: rem(5)
+  position: relative
+
+  &:not(.content-editable)
+    height: rem(97)
+
+  & > input, & > select
+    height: rem(60)
+
+  &.content-editable > textarea
+    min-height: rem(270)
+
+    &:focus, &:not(:empty)
+      background-position: calc(100% - rem(10)) calc(100% - rem(6))
+      padding: rem(6) rem(15)
+      font-size: rem(16)
+
+      & ~ label
+        padding: rem(8) rem(15)
+        transform: scale(.5) translateY(-rem(10))
+        font-size: rem(16)
+
+  & > select
+    background: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M7.42969 9.5L5.92969 11L12 17.0703L18.0703 11L16.5703 9.5L12 14.0703L7.42969 9.5Z" fill="black"/%3E%3C/svg%3E%0A') no-repeat calc(100% - rem(10)) 50%/rem(24) rem(24)
+
+    &:focus, &:not(:required:invalid)
+      background-position: calc(100% - rem(10)) calc(100% - rem(6))
+      padding: rem(28) rem(15) rem(6)
+
+      & ~ label
+        padding: rem(8) rem(15)
+        transform: scale(.5) translateY(-rem(10))
+        font-size: rem(12)
+        color: $rgba-dark70
+
+    & ~ label
+      color: transparent
+
+  & > textarea
+    height: rem(270)
+
+  & > input, & > textarea, & > select, > .textarea
+    background-color: $hex-light
+    padding: rem(17) rem(15)
+    border-radius: rem(5)
+    border: 1px solid $rgba-light20
+    width: 100%
+    font-size: rem(24)
+    font-weight: 700
+    line-height: 1
+    color: $hex-dark
+    transition: all .15s ease-in-out, box-shadow .15s ease-in-out
+    appearance: none
+
+  & > input, & > textarea
+    &::placeholder
+      color: transparent
+
+    &:focus, &:not(:placeholder-shown)
+      padding: rem(28) rem(15) rem(8)
+
+      & ~ label
+        padding: rem(8) rem(15)
+        transform: scale(.5) translateY(-rem(10))
+        font-size: rem(12)
+        color: $rgba-dark70
+
+  & > label
+    position: absolute
+    top: 0
+    left: 0
+    padding: rem(18) rem(15)
+    pointer-events: none
+    transform-origin: 0 0
+    transition: all .1s ease-in-out, transform .1s ease-in-out
+    color: $hex-dark
+    font-size: rem(24)
+    font-weight: 700
+    line-height: 1
+
+  & p
+    display: flex
+    gap: rem(2)
+    align-items: center
+    font-size: rem(12)
+    font-weight: 700
+    line-height: 1
+    color: $hex-yellow
+    & label
+      color: $hex-mint
+
+.definition-group
+  &:not(.profile-definition)
+    display: flex
+    flex-direction: column
+    width: calc(100vw - rem(50))
+
+    & > div
+      display: flex
+      gap: rem(15)
+
+.item-group
+  display: flex
+  flex-direction: column
+  gap: rem(10)
+  @include col
+  position: relative
+  height: rem(97)
+
+  &.career-description
+    height: auto
+
+    & dd
+      padding-bottom: rem(37)
+      height: auto
+      line-height: 1.33333333
+
+      & p
+        bottom: rem(10)
+
+  & dt
+    position: absolute
+    top: 0
+    left: 0
+    padding: rem(8) rem(15)
+    display: block
+    padding: rem(28) rem(15) rem(8)
+    border-radius: rem(5)
+    width: 100%
+    height: rem(60)
+    font-weight: 700
+    line-height: 1
+    appearance: none
+    position: relative
+
+    & span
+      font-size: rem(24)
+      color: $hex-light
+
+    & p
+      position: absolute
+      bottom: rem(-15)
+      left: rem(15)
+      font-size: rem(12)
+      font-weight: 900
+      color: $hex-yellow
+
+.button-group
+  display: flex
+  flex-direction: column
+  gap: rem(15)
+
+  & > button, & > a
+    padding: 0 rem(35)
+    border-radius: rem(5)
+    border: 0
+    width: 100%
+    height: rem(70)
+    background-color: $hex-mint
+    position: relative
+    font-size: rem(24)
+    font-weight: 700
+    color: $hex-dark
+    line-height: 1
+
+  & > a
+    display: flex
+    justify-content: center
+    align-items: center
+    width: rem(370)
+    line-height: rem(70)
+
+.array-container
+  display: flex
+  flex-direction: column
+  gap: rem(50)
+
+  & h1
+    font-size: rem(32)
+    font-weight: 900
+    color: $hex-light
+
+    & strong
+      font-size: rem(16)
+      color: $hex-yellow
+
+      &::before
+        content: '* '
+        padding-left: rem(10)
+
+  & p.no-data
+    color: $hex-light
+    font-size: rem(24)
+    font-weight: 700
+    text-align: center
+
+  & fieldset
+    display: flex
+    flex-direction: column
+    gap: rem(50)
+
+  & .form-group
+    &:not(.single-group)
+      display: flex
+      flex-direction: column
+      gap: rem(25)
+
+  & .data-group
+    display: flex
+    flex-direction: column
+    gap: rem(50)
+
+    & .list
+      display: flex
+      flex-direction: column
+      gap: rem(15)
+      padding-bottom: rem(15)
+      border: rem(1) solid $hex-light
+      border-right: 0
+      border-left: 0
+
+      & .item
+        position: relative
+        padding-top: rem(25)
+        border-top: rem(1) solid $hex-light
+
+        & form fieldset > div:last-of-type
+          & > button
+            background-color: $hex-yellow
+          & div button
+            color: $hex-yellow
+
+        & .project-list
+          display: flex
+          flex-direction: column
+          gap: rem(15)
+          backdrop-filter: saturate(1.8) blur(20px)
+          background-color: $rgba-dark70
+          border-radius: rem(5)
+          margin-bottom: rem(15)
+          padding: 0 rem(25)
+
+        & .project-item
+          position: relative
+          padding-top: rem(25)
+          border-top: rem(1) solid $rgba-light50
+
+          & form fieldset > div:last-of-type
+            & > button
+              background-color: transparent
+              color: $hex-yellow
+              border: rem(2) solid $hex-yellow
+
+          &.first-of-type
+            border-top: 0
+
+          &.last-of-type
+            padding-bottom: rem(25)
+
+          & .view
+            & dl
+              width: auto
+
+          & .item-management
+            top: rem(25)
+            right: rem(0)
+
+            & button
+              width: rem(45)
+              height: rem(30)
+
+              &.edit
+                background-color: $hex-light
+                color: $hex-dark
+                font-size: rem(14)
+
+              &.del
+                background-color: $hex-light
+                color: $hex-danger
+                font-size: rem(14)
+
+        &:first-of-type
+          border-top: 0
+
+        & .item-management
+          display: flex
+          flex-direction: column
+          gap: rem(15)
+          position: absolute
+          top: rem(25)
+          right: 0
+
+          & button
+            border-radius: rem(2)
+            width: rem(50)
+            height: rem(30)
+            font-size: rem(16)
+            font-weight: 700
+            line-height: 1
+
+            &.edit
+              background-color: $hex-mint
+              color: $hex-dark
+
+            &.del
+              background-color: $hex-danger
+              color: $hex-light
+
+        & > .view ~ div:not(.project-list)
+          & button
+            background-color: transparent
+            border: rem(2) solid $hex-mint
+            color: $hex-light
+
+.fragment
+  display: grid
+  width: max-content
+  gap: rem(15)
+
+  &.array-education
+    grid-template-columns: auto auto auto auto
+
+    & > div
+      width: rem(230)
+
+      &:nth-of-type(3)
+        grid-column: span 2
+
+  &.array-certificate
+    grid-template-columns: auto auto auto
+
+    & > div
+      width: rem(230)
+
+      &:nth-of-type(2)
+        grid-column: span 2
+
+  &.array-skill
+    grid-template-columns: auto auto auto auto
+
+    & > div
+      width: rem(230)
+
+  &.array-career
+    display: block
+
+    & .array-career
+      display: grid
+      grid-template-columns: auto auto auto auto
+      gap: rem(15)
+
+      & > div
+        width: rem(230)
+
+        &:nth-of-type(3)
+          grid-column: span 2
+
+    & .project-add
+      display: flex
+      justify-content: flex-end
+
+      & button
+        background-color: $hex-yellow
+        padding: 0 rem(15)
+        border: rem(1) solid $rgba-dark20
+        border-radius: rem(5)
+        width: auto
+        height: rem(50)
+        font-size: rem(16)
+        font-weight: 700
+        line-height: 1
+        color: $hex-dark
+
+  &.array-projects
+    grid-template-columns: auto auto auto auto
+
+    & > div
+      width: rem(230)
+
+      &:last-of-type
+        grid-column: span 3
+        width: 100%
+
+  & .projects-list
+    display: flex
+    flex-direction: column
+    gap: rem(50)
+
+  & button
+    background-color: $hex-danger
+    padding: 0 rem(15)
+    border-radius: rem(5)
+    border: 1px solid $rgba-light20
+    width: auto
+    height: rem(60)
+    font-size: rem(24)
+    line-height: 1
+    color: $hex-light
+
+  .util
+    display: flex
+    justify-content: space-between
+
+  .session-util
+    display: flex
+    & a
+      padding: rem(15)
+
+.util
+  display: flex
+  justify-content: space-between
+
+.session-util
+  display: flex
+
+  & button
+    background: none
+
+  & a, & button
+    padding: rem(5) rem(10)
+    font-size: rem(14)
+    line-height: 1.42857143
+    color: $hex-mint
+
+    &:hover, &:focus
+      text-decoration: underline

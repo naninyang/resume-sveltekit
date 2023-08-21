@@ -1,0 +1,84 @@
+@use 'sass:math'
+
+$defaultPixel: 16
+
+$hex-dark: #171717
+$hex-light: #eaffff
+$hex-yellow: #ffd800
+$hex-mint: #89ddff
+$hex-background: #212121
+$hex-danger: #C14848
+$hex-warning: #F3B3BC
+
+$rgba-background80: rgba($hex-background, .8)
+$rgba-dark20: rgba($hex-dark, .2)
+$rgba-dark50: rgba($hex-dark, .5)
+$rgba-dark70: rgba($hex-dark, .7)
+$rgba-light20: rgba($hex-light, .2)
+$rgba-light50: rgba($hex-light, .5)
+$rgba-light70: rgba($hex-light, .7)
+$rgba-yellow20: rgba($hex-yellow, .2)
+$rgba-yellow50: rgba($hex-yellow, .5)
+$rgba-yellow70: rgba($hex-yellow, .7)
+$rgba-mint20: rgba($hex-mint, .2)
+$rgba-mint50: rgba($hex-mint, .5)
+$rgba-mint70: rgba($hex-mint, .7)
+
+@mixin row
+  display: flex
+  flex-wrap: wrap
+  & > *
+    flex-shrink: 0
+    width: 100%
+    max-width: 100%
+
+@mixin col
+  flex: 1 0 0%
+
+@mixin coln
+  flex: 0 0 auto
+
+@mixin col-auto
+  flex: 0 0 auto
+  width: auto
+
+@mixin ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+@mixin clearfix
+  &::before, &::after
+    content: ''
+    display: block
+    clear: both
+
+@mixin screen-reader-only
+  position: absolute
+  overflow: hidden
+  margin: 0
+  width: 1px
+  height: 1px
+  clip: rect(1px, 1px, 1px, 1px)
+
+@mixin visually-hidden-focusable
+  position: absolute
+  overflow: hidden
+  z-index: 20
+  margin: 0
+  width: auto
+  height: auto
+  clip: auto
+
+@mixin image-rendering
+  image-rendering: -webkit-optimize-contrast
+  backface-visibility: hidden
+
+@function line-abbr($clamp, $height, $lineheight)
+  @return "overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: #{$clamp}; max-height: #{$height / 16}rem; line-height: #{$lineheight};"
+
+@function rem($px)
+  @return math.div($px, $defaultPixel) + rem
+
+@function vw($px, $width)
+  @return ($px * 100) / $width + vw

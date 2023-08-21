@@ -1,129 +1,157 @@
-<script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { page } from '$app/stores';
+  import LinkButton from '$lib/components/LinkButton.svelte';
+  let currentRouterPath = '';
+
+  onMount(() => {
+    currentRouterPath = window.location.pathname;
+  });
+
+  function isCurrentRouter(paths: string[]): boolean {
+    return paths.includes(currentRouterPath);
+  }
+
+  type LiParentProps = {
+    currentRouter?: boolean;
+  };
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
+<nav class="nav">
+  <ol>
+    <li
+      class="item-parent-{isCurrentRouter(['/profile', '/profile-edit']) ? 'active' : 'inactive'}"
+    >
+      <LinkButton href="/manages/profile">프로필</LinkButton>
+      <ol>
+        <li class="item-child-{isCurrentRouter(['/manages/profile']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/profile">프로필 보기</LinkButton>
+        </li>
+        <li class="item-child-{isCurrentRouter(['/manages/profile-edit']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/profile-edit">인적사항 수정</LinkButton>
+        </li>
+      </ol>
+    </li>
+    <li
+      class="item-parent-{isCurrentRouter(['/manages/military-service', '/manages/education'])
+        ? 'active'
+        : 'inactive'}"
+    >
+      <LinkButton href="/manages/military-service">기본사항</LinkButton>
+      <ol>
+        <li
+          class="item-child-{isCurrentRouter(['/manages/military-service'])
+            ? 'active'
+            : 'inactive'}"
+        >
+          <LinkButton href="/manages/military-service">병역사항</LinkButton>
+        </li>
+        <li class="item-child-{isCurrentRouter(['/manages/education']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/education">학력사항</LinkButton>
+        </li>
+      </ol>
+    </li>
+    <li
+      class="item-parent-{isCurrentRouter([
+        '/manages/certificate',
+        '/manages/language',
+        '/manages/award',
+        '/manages/skill'
+      ])
+        ? 'active'
+        : 'inactive'}"
+    >
+      <LinkButton href="/manages/certificate">능력사항</LinkButton>
+      <ol>
+        <li class="item-parent-{isCurrentRouter(['/manages/certificate']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/certificate">자격증</LinkButton>
+        </li>
+        <li class="item-parent-{isCurrentRouter(['/manages/language']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/language">외국어능력</LinkButton>
+        </li>
+        <li class="item-parent-{isCurrentRouter(['/manages/award']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/award">수상기록</LinkButton>
+        </li>
+        <li class="item-parent-{isCurrentRouter(['/manages/skill']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/skill">보유기술</LinkButton>
+        </li>
+      </ol>
+    </li>
+    <li
+      class="item-parent-{isCurrentRouter(['/manages/activity', '/manages/career'])
+        ? 'active'
+        : 'inactive'}"
+    >
+      <LinkButton href="/manages/activity">활동사항</LinkButton>
+      <ol>
+        <li class="item-parent-{isCurrentRouter(['/manages/activity']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/activity">대외활동</LinkButton>
+        </li>
+        <li class="item-parent-{isCurrentRouter(['/manages/career']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/career">경력사항</LinkButton>
+        </li>
+      </ol>
+    </li>
+    <li
+      class="item-parent-{isCurrentRouter(['/manages/reference', '/manages/essay'])
+        ? 'active'
+        : 'inactive'}"
+    >
+      <LinkButton href="/manages/reference">추가정보</LinkButton>
+      <ol>
+        <li class="item-parent-{isCurrentRouter(['/manages/reference']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/reference">소셜미디어/홈페이지</LinkButton>
+        </li>
+        <li class="item-parent-{isCurrentRouter(['/manages/essay']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/essay">자기소개서</LinkButton>
+        </li>
+      </ol>
+    </li>
+    <li><LinkButton href="/">이력서보기</LinkButton></li>
+    <!-- <li><button type="button" onClick="{handleSignOut}">로그아웃</button></li> -->
+    <!-- <li aria-current="{$page.url.pathname === '/' ? 'page' : undefined}">
+      <a href="/">Home</a>
+    </li>
+    <li aria-current="{$page.url.pathname === '/about' ? 'page' : undefined}">
+      <a href="/about">About</a>
+    </li>
+    <li aria-current="{$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}">
+      <a href="/sverdle">Sverdle</a>
+    </li> -->
+  </ol>
+</nav>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
+<style lang="sass">
+  @import 'lib/styles/_designSystem'
+  
+  nav
+    font-size: rem(16)
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
-</header>
+  .item-parent
+    &-active
+      & > a
+        font-weight: 700
+        color: $hex-light
 
-<style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
+    &-inactive
+      & > a
+        font-weight: unset
+        color: $rgba-light70
+      & ol
+        display: none
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
+  .li-child
+    &-active
+      & a
+        border-radius: rem(52)
+        background-color: $hex-mint
+        font-weight: 700
+        color: $hex-dark
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--color-theme-1);
-	}
+    &.inactive
+      & a
+        border-radius: unset
+        background-color: unset
+        font-weight: unset
+        color: $hex-dark
 </style>
