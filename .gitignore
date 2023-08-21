@@ -58,3 +58,9 @@ package
 package-lock.json
 yarn.lock
 .pnpm-debug.log
+
+# Ignore prisma
+prisma/.env
+prisma/db/**
+prisma/migrations/**
+@prisma/client
