@@ -51,6 +51,34 @@ nav.nav
   & button
     background-color: transparent
 
+  & .item-parent
+    &-active
+      & > a
+        font-weight: 700
+        color: $hex-light
+        
+      & ol
+        display: flex
+
+    &-inactive
+      & > a
+        font-weight: unset
+        color: $rgba-light70
+      & ol
+        display: none
+        
+  & .item-child
+    &-active
+      & a
+        border-radius: rem(52)
+        background-color: $hex-mint
+        font-weight: 700
+        color: $hex-dark
+
+    &-inactive
+      & a
+        color: $hex-dark
+
 main.container
   display: flex
   flex-direction: column
