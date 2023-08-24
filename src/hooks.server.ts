@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import prisma from '$lib/prisma';
 
 export const handle: Handle = async ({ event, resolve }) => {
-  const authCookie = event.cookies.get('AuthorizationToken');
+  const authCookie = event.cookies.get('token');
 
   if (authCookie) {
     const token = authCookie.split(' ')[1];

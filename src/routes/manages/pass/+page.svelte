@@ -17,7 +17,6 @@
           await applyAction(result);
           if (result.type === 'success') {
             const user = result.data?.user;
-            await goto('/manages/settings');
           } else {
             toast.error('계정이 없거나 ID/비밀번호가 잘못되었습니다', {
               duration: 5000,

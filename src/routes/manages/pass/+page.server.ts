@@ -1,6 +1,6 @@
 import prisma from '$lib/prisma';
 import auth from '$lib/auth';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import bcrypt from 'bcryptjs';
 
@@ -23,12 +23,14 @@ export const actions: Actions = {
 
     const { token } = await auth(userid);
 
-    event.cookies.set('AuthorizationToken', `Bearer ${token}`, {
+    event.cookies.set('token', `Bearer ${token}`, {
       httpOnly: true,
       path: '/',
       secure: true,
       sameSite: 'strict',
       maxAge: 60 * 60 * 24 * 14
     });
+
+    throw redirect(302, '/manages/settings');
   }
 } satisfies Actions;

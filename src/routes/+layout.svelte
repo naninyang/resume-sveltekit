@@ -1,6 +1,5 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import Header from './Header.svelte';
   import '$lib/styles/global.sass';
   import '$lib/styles/manageSystem.sass';
 
@@ -21,7 +20,6 @@
 <div class="app">
   {#if isManagementPage}
     <div class="management-page">
-      <Header />
       <slot />
     </div>
   {/if}
