@@ -14,14 +14,9 @@ model user {
   id                Int                @id @default(autoincrement())
   userid            String             @unique
   username          String
-  email             String
-  telephone         String?            
+  email             String             @unique
   password          String
-  address           String?
-  veteran           String?
-  disability        String?
-  username_show     Boolean?           @default(false)
-  email_show        Boolean?           @default(false)
+  profiles          profile[]
   educations        education[]
   military_services military_service[]
   activities        activity[]
@@ -32,6 +27,18 @@ model user {
   references        reference[]
   careers           career[]
   essays            essay[]
+}
+
+model profile {
+  id            Int      @id @default(autoincrement())
+  telephone     String?
+  address       String?
+  veteran       String?
+  disability    String?
+  username_show Boolean? @default(false)
+  email_show    Boolean? @default(false)
+  userId        Int?
+  user          user?    @relation(fields: [userId], references: [id])
 }
 
 model education {

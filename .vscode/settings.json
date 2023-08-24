@@ -10,6 +10,6 @@
   },
   "[prisma]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "Prisma.prisma"
   }
 }
