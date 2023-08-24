@@ -2,7 +2,7 @@ import type { Handle } from '@sveltejs/kit';
 import { JWT_ACCESS_SECRET } from '$env/static/private';
 import jwt from 'jsonwebtoken';
 
-import { prisma } from '$lib/prisma';
+import prisma from '$lib/prisma';
 
 export const handle: Handle = async ({ event, resolve }) => {
   const authCookie = event.cookies.get('AuthorizationToken');

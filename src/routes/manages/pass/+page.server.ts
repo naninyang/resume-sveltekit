@@ -1,5 +1,5 @@
-import { prisma } from '$lib/prisma';
-import { auth } from '$lib/auth';
+import prisma from '$lib/prisma';
+import auth from '$lib/auth';
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import bcrypt from 'bcryptjs';

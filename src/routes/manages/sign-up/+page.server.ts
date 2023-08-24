@@ -1,4 +1,4 @@
-import { prisma } from '$lib/prisma';
+import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
 import bcrypt from 'bcrypt';
 import type { Actions } from './$types';
@@ -12,7 +12,7 @@ type Errors = {
 };
 
 const validateEmail = (email: string) => {
-  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
 };
 
 export const actions = {
