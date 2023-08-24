@@ -17,18 +17,55 @@
   };
 </script>
 
+<style lang="sass">
+  @import 'lib/styles/_designSystem'
+  
+  nav
+    font-size: rem(16)
+
+  .item-parent
+    &-active
+      & > a
+        font-weight: 700
+        color: $hex-light
+
+    &-inactive
+      & > a
+        font-weight: unset
+        color: $rgba-light70
+      & ol
+        display: none
+
+  .li-child
+    &-active
+      & a
+        border-radius: rem(52)
+        background-color: $hex-mint
+        font-weight: 700
+        color: $hex-dark
+
+    &-inactive
+      & a
+        border-radius: unset
+        background-color: unset
+        font-weight: unset
+        color: $hex-dark
+</style>
+
 <nav class="nav">
   <ol>
     <li
-      class="item-parent-{isCurrentRouter(['/profile', '/profile-edit']) ? 'active' : 'inactive'}"
+      class="item-parent-{isCurrentRouter(['/manages/settings', '/manages/profile'])
+        ? 'active'
+        : 'inactive'}"
     >
-      <LinkButton href="/manages/profile">프로필</LinkButton>
+      <LinkButton href="/manages/settings">유저정보</LinkButton>
       <ol>
-        <li class="item-child-{isCurrentRouter(['/manages/profile']) ? 'active' : 'inactive'}">
-          <LinkButton href="/manages/profile">프로필 보기</LinkButton>
+        <li class="item-child-{isCurrentRouter(['/manages/settings']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/settings">로그인 정보</LinkButton>
         </li>
-        <li class="item-child-{isCurrentRouter(['/manages/profile-edit']) ? 'active' : 'inactive'}">
-          <LinkButton href="/manages/profile-edit">인적사항 수정</LinkButton>
+        <li class="item-child-{isCurrentRouter(['/manages/profile']) ? 'active' : 'inactive'}">
+          <LinkButton href="/manages/profile">프로필 정보</LinkButton>
         </li>
       </ol>
     </li>
@@ -120,38 +157,3 @@
     </li> -->
   </ol>
 </nav>
-
-<style lang="sass">
-  @import 'lib/styles/_designSystem'
-  
-  nav
-    font-size: rem(16)
-
-  .item-parent
-    &-active
-      & > a
-        font-weight: 700
-        color: $hex-light
-
-    &-inactive
-      & > a
-        font-weight: unset
-        color: $rgba-light70
-      & ol
-        display: none
-
-  .li-child
-    &-active
-      & a
-        border-radius: rem(52)
-        background-color: $hex-mint
-        font-weight: 700
-        color: $hex-dark
-
-    &.inactive
-      & a
-        border-radius: unset
-        background-color: unset
-        font-weight: unset
-        color: $hex-dark
-</style>
