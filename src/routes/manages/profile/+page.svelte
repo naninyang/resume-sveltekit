@@ -9,11 +9,8 @@
 
   const { user } = data;
   const profiles = $page.data.props.profiles.profiles;
-  let username_show = false;
-  let email_show = false;
-
-  username_show = profiles.username_show;
-  email_show = profiles.email_show;
+  let isUsernameShowChecked = profiles && profiles[0] && profiles[0].username_show;
+  let isEmailShowChecked = profiles && profiles[0] && profiles[0].email_show;
 </script>
 
 <svelte:head>
@@ -57,7 +54,7 @@
                     type="checkbox"
                     id="username_show"
                     name="username_show"
-                    bind:checked={username_show}
+                    bind:checked={isUsernameShowChecked}
                   />
                   <label for="username_show">사용자 이름 표시</label>
                 </div>
@@ -66,7 +63,7 @@
                     type="checkbox"
                     id="email_show"
                     name="email_show"
-                    bind:checked={email_show}
+                    bind:checked={isEmailShowChecked}
                   />
                   <label for="email_show"> 이메일 표시 </label>
                 </div>

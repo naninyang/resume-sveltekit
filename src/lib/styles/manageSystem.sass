@@ -124,10 +124,15 @@ p.auth-message
   & > div
     display: flex
     gap: rem(10)
+    
+    &.checkbox-group      
+      & > div
+        display: flex
+        gap: rem(5)
+        padding-bottom: rem(37)
 
     & > div
       @include col
-      padding-bottom: rem(37)
       
       input
         appearance: none
