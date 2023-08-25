@@ -37,7 +37,7 @@ model profile {
   disability    String?
   username_show Boolean? @default(false)
   email_show    Boolean? @default(false)
-  userId        Int?
+  userId        Int?     @unique
   user          user?    @relation(fields: [userId], references: [id])
 }
 

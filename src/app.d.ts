@@ -12,4 +12,12 @@ declare namespace App {
     username: string;
     email: string;
   }
+  interface profile {
+    telephone?: string;
+    address?: string;
+    veteran?: string;
+    disability?: string;
+    username_show?: boolean;
+    email_show?: boolean;
+  }
 }
