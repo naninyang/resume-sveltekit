@@ -8,4 +8,8 @@ declare namespace App {
       userid: string;
     };
   }
+  interface userData {
+    username: string;
+    email: string;
+  }
 }

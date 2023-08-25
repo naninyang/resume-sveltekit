@@ -6,15 +6,6 @@ const config = {
   test: {
     include: ['src/**/*.{test,spec}.{js,ts}']
   },
-  server: {
-    proxy: {
-      '/api': {
-        // target: 'http://localhost:5173/',
-        target: 'http://localhost:5555/',
-        changeOrigin: true
-      }
-    }
-  },
   css: {
     preprocessorOptions: {
       sass: {

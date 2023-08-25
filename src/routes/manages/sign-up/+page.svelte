@@ -6,6 +6,10 @@
   export let form: ActionData;
 </script>
 
+<svelte:head>
+  <title>회원가입</title>
+</svelte:head>
+
 <Toaster />
 
 <main class="container">
@@ -19,7 +23,7 @@
             const user = result.data?.user;
             await goto('/manages/pass');
           } else {
-            toast.error('잘못 입력된 항목이 있습니다.', {
+            toast.error('잘못 입력된 항목이 있습니다', {
               duration: 5000,
               position: 'top-center'
             });

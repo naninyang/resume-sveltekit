@@ -50,8 +50,6 @@ export const actions = {
       errors['passwordConfirmation'] = '비밀번호가 일치하지 않습니다';
     else delete errors['passwordConfirmation'];
 
-    console.log('Object.keys(errors).length):', Object.keys(errors).length);
-
     if (Object.keys(errors).length) return fail(400, { errors });
 
     const hashedPassword = await bcrypt.hash(password, 10);

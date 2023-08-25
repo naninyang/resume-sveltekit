@@ -1,8 +1,16 @@
 import prisma from '$lib/prisma';
 import auth from '$lib/auth';
 import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import bcrypt from 'bcryptjs';
+
+export const load: PageServerLoad = (event) => {
+  const user = event.locals.user;
+
+  return {
+    user
+  };
+};
 
 export const actions: Actions = {
   async default(event) {

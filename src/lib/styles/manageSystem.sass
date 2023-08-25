@@ -93,15 +93,30 @@ main.container
   display: flex
   flex-direction: column
   gap: rem(50)
+  
   & h1
     font-size: rem(32)
     font-weight: 900
     color: $hex-light
+    
+    & strong
+      font-size: rem(16)
+      color: $hex-yellow
+
+      &::before
+        content: '* '
+        padding-left: rem(10)
+        
   & fieldset
     display: flex
     flex-direction: column
     gap: rem(50)
 
+p.auth-message
+  font-size: rem(20)
+  font-weight: 700
+  color: $hex-yellow
+  
 .form-group
   display: flex
   flex-direction: column
