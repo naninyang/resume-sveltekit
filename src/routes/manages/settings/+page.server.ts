@@ -16,9 +16,7 @@ export const load: PageServerLoad = async (event) => {
   const userId = user?.id;
 
   if (!user) {
-    throw error(401, {
-      message: 'You must be logged in to view this page'
-    });
+    throw redirect(302, '/manages/pass');
   }
 
   const userDetails = await prisma.user.findUnique({

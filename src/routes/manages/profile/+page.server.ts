@@ -6,7 +6,7 @@ export const load: PageServerLoad = async (event) => {
   const user = event.locals.user;
   const userId = user?.id;
   if (!user) {
-    throw new Error('User not authenticated');
+    throw redirect(302, '/manages/pass');
   }
 
   const profiles = await prisma.user.findUnique({
@@ -34,7 +34,7 @@ export const actions: Actions = {
     const userId = user?.id;
 
     if (!user) {
-      throw new Error('User not authenticated');
+      throw redirect(302, '/manages/pass');
     }
 
     const formData = new URLSearchParams((await event.request.formData()) as any);
