@@ -8,9 +8,15 @@
   export let data: PageData;
 
   const { user } = data;
+
   const profiles = $page.data.props.profiles.profiles;
-  let isUsernameShowChecked = profiles && profiles[0] && profiles[0].username_show;
-  let isEmailShowChecked = profiles && profiles[0] && profiles[0].email_show;
+  let isProfilePresent = profiles && profiles.length > 0;
+
+  let isUsernameShowCreateChecked = profiles && profiles[0] && profiles[0].username_show;
+  let isEmailShowCreateChecked = profiles && profiles[0] && profiles[0].email_show;
+
+  let isUsernameShowUpdateChecked = profiles && profiles[0] && profiles[0].username_show;
+  let isEmailShowUpdateChecked = profiles && profiles[0] && profiles[0].email_show;
 </script>
 
 <svelte:head>
@@ -48,66 +54,129 @@
           <fieldset>
             <legend>회원가입 양식</legend>
             <div class="form-group">
-              <div class="checkbox-group">
-                <div>
-                  <input
-                    type="checkbox"
-                    id="username_show"
-                    name="username_show"
-                    bind:checked={isUsernameShowChecked}
-                  />
-                  <label for="username_show">사용자 이름 표시</label>
+              {#if isProfilePresent}
+                <div class="checkbox-group">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="username_show"
+                      name="username_show"
+                      bind:checked={isUsernameShowUpdateChecked}
+                    />
+                    <label for="username_show">사용자 이름 표시</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="email_show"
+                      name="email_show"
+                      bind:checked={isEmailShowUpdateChecked}
+                    />
+                    <label for="email_show">이메일 표시</label>
+                  </div>
                 </div>
-                <div>
+                <div class="field-group">
                   <input
-                    type="checkbox"
-                    id="email_show"
-                    name="email_show"
-                    bind:checked={isEmailShowChecked}
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="주소"
+                    value={profiles?.[0].address || ''}
                   />
-                  <label for="email_show"> 이메일 표시 </label>
+                  <label for="address">주소</label>
                 </div>
-              </div>
-              <div class="field-group">
-                <input
-                  type="text"
-                  id="address"
-                  name="address"
-                  placeholder="주소"
-                  value={profiles?.[0].address || ''}
-                />
-                <label for="address">주소</label>
-              </div>
-              <div class="field-group">
-                <input
-                  type="tel"
-                  id="telephone"
-                  name="telephone"
-                  value={profiles?.[0].telephone || ''}
-                  placeholder="연락처"
-                />
-                <label for="telephone">연락처</label>
-              </div>
-              <div class="field-group">
-                <input
-                  type="text"
-                  id="veteran"
-                  name="veteran"
-                  value={profiles?.[0].veteran || ''}
-                  placeholder="보훈대상"
-                />
-                <label for="veteran">보훈대상</label>
-              </div>
-              <div class="field-group">
-                <input
-                  type="text"
-                  id="disability"
-                  name="disability"
-                  value={profiles?.[0].disability || ''}
-                  placeholder="장애대상"
-                />
-                <label for="disability">장애대상</label>
-              </div>
+                <div class="field-group">
+                  <input
+                    type="tel"
+                    id="telephone"
+                    name="telephone"
+                    value={profiles?.[0].telephone || ''}
+                    placeholder="연락처"
+                  />
+                  <label for="telephone">연락처</label>
+                </div>
+                <div class="field-group">
+                  <input
+                    type="text"
+                    id="veteran"
+                    name="veteran"
+                    value={profiles?.[0].veteran || ''}
+                    placeholder="보훈대상"
+                  />
+                  <label for="veteran">보훈대상</label>
+                </div>
+                <div class="field-group">
+                  <input
+                    type="text"
+                    id="disability"
+                    name="disability"
+                    value={profiles?.[0].disability || ''}
+                    placeholder="장애대상"
+                  />
+                  <label for="disability">장애대상</label>
+                </div>
+              {:else}
+                <div class="checkbox-group">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="username_show"
+                      name="username_show"
+                      bind:checked={isUsernameShowCreateChecked}
+                    />
+                    <label for="username_show">사용자 이름 표시</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="email_show"
+                      name="email_show"
+                      bind:checked={isEmailShowCreateChecked}
+                    />
+                    <label for="email_show">이메일 표시</label>
+                  </div>
+                </div>
+                <div class="field-group">
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="주소"
+                    value={profiles?.address || ''}
+                  />
+                  <label for="address">주소</label>
+                </div>
+                <div class="field-group">
+                  <input
+                    type="tel"
+                    id="telephone"
+                    name="telephone"
+                    value={profiles?.telephone || ''}
+                    placeholder="연락처"
+                  />
+                  <label for="telephone">연락처</label>
+                </div>
+                <div class="field-group">
+                  <input
+                    type="text"
+                    id="veteran"
+                    name="veteran"
+                    value={profiles?.veteran || ''}
+                    placeholder="보훈대상"
+                  />
+                  <label for="veteran">보훈대상</label>
+                </div>
+                <div class="field-group">
+                  <input
+                    type="text"
+                    id="disability"
+                    name="disability"
+                    value={profiles?.disability || ''}
+                    placeholder="장애대상"
+                  />
+                  <label for="disability">장애대상</label>
+                </div>
+              {/if}
             </div>
             <div class="button-group">
               <button type="submit">갱신하기</button>
