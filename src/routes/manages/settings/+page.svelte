@@ -2,6 +2,7 @@
   import toast, { Toaster } from 'svelte-french-toast';
   import { applyAction, enhance } from '$app/forms';
   import type { ActionData, PageData } from './$types';
+
   export let form: ActionData;
   export let data: PageData;
 

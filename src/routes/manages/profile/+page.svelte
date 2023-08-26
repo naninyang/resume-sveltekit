@@ -1,10 +1,9 @@
 <script lang="ts">
   import toast, { Toaster } from 'svelte-french-toast';
   import { applyAction, enhance } from '$app/forms';
-  import type { ActionData, PageData } from './$types';
+  import type { PageData } from './$types';
   import { page } from '$app/stores';
 
-  export let form: ActionData;
   export let data: PageData;
 
   const { user } = data;

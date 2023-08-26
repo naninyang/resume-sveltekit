@@ -1,14 +1,8 @@
 <script lang="ts">
   import type { LayoutData } from './$types';
-  import { page } from '$app/stores';
   import LinkButton from '$lib/components/LinkButton.svelte';
+  import { page } from '$app/stores';
   export let data: LayoutData;
-
-  let currentRouterPath = $page.url.pathname;
-
-  function isCurrentRouter(paths: string[]): boolean {
-    return paths.includes(currentRouterPath);
-  }
 </script>
 
 <style lang="sass">
@@ -23,21 +17,22 @@
     <nav class="nav">
       <ol>
         <li
-          class={isCurrentRouter(['/manages/settings', '/manages/profile'])
+          class={$page.url.pathname === '/manages/settings' ||
+          $page.url.pathname === '/manages/profile'
             ? 'item-parent-active'
             : 'item-parent-inactive'}
         >
           <LinkButton href="/manages/settings">유저정보</LinkButton>
           <ol>
             <li
-              class={isCurrentRouter(['/manages/settings'])
+              class={$page.url.pathname === '/manages/settings'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
               <LinkButton href="/manages/settings">로그인 정보</LinkButton>
             </li>
             <li
-              class={isCurrentRouter(['/manages/profile'])
+              class={$page.url.pathname === '/manages/profile'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
@@ -46,21 +41,22 @@
           </ol>
         </li>
         <li
-          class={isCurrentRouter(['/manages/military-service', '/manages/education'])
+          class={$page.url.pathname === '/manages/military-service' ||
+          $page.url.pathname === '/manages/education'
             ? 'item-parent-active'
             : 'item-parent-inactive'}
         >
           <LinkButton href="/manages/military-service">기본사항</LinkButton>
           <ol>
             <li
-              class={isCurrentRouter(['/manages/military-service'])
+              class={$page.url.pathname === '/manages/military-service'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
               <LinkButton href="/manages/military-service">병역사항</LinkButton>
             </li>
             <li
-              class={isCurrentRouter(['/manages/education'])
+              class={$page.url.pathname === '/manages/education'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
@@ -69,40 +65,38 @@
           </ol>
         </li>
         <li
-          class={isCurrentRouter([
-            '/manages/certificate',
-            '/manages/language',
-            '/manages/award',
-            '/manages/skill'
-          ])
+          class={$page.url.pathname === '/manages/certificate' ||
+          $page.url.pathname === '/manages/language' ||
+          $page.url.pathname === '/manages/award' ||
+          $page.url.pathname === '/manages/skill'
             ? 'item-parent-active'
             : 'item-parent-inactive'}
         >
           <LinkButton href="/manages/certificate">능력사항</LinkButton>
           <ol>
             <li
-              class={isCurrentRouter(['/manages/certificate'])
+              class={$page.url.pathname === '/manages/certificate'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
               <LinkButton href="/manages/certificate">자격증</LinkButton>
             </li>
             <li
-              class={isCurrentRouter(['/manages/language'])
+              class={$page.url.pathname === '/manages/language'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
               <LinkButton href="/manages/language">외국어능력</LinkButton>
             </li>
             <li
-              class={isCurrentRouter(['/manages/award'])
+              class={$page.url.pathname === '/manages/award'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
               <LinkButton href="/manages/award">수상기록</LinkButton>
             </li>
             <li
-              class={isCurrentRouter(['/manages/skill'])
+              class={$page.url.pathname === '/manages/skill'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
@@ -111,21 +105,22 @@
           </ol>
         </li>
         <li
-          class={isCurrentRouter(['/manages/activity', '/manages/career'])
+          class={$page.url.pathname === '/manages/activity' ||
+          $page.url.pathname === '/manages/career'
             ? 'item-parent-active'
             : 'item-parent-inactive'}
         >
           <LinkButton href="/manages/activity">활동사항</LinkButton>
           <ol>
             <li
-              class={isCurrentRouter(['/manages/activity'])
+              class={$page.url.pathname === '/manages/activity'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
               <LinkButton href="/manages/activity">대외활동</LinkButton>
             </li>
             <li
-              class={isCurrentRouter(['/manages/career'])
+              class={$page.url.pathname === '/manages/career'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
@@ -134,21 +129,22 @@
           </ol>
         </li>
         <li
-          class={isCurrentRouter(['/manages/reference', '/manages/essay'])
+          class={$page.url.pathname === '/manages/reference' ||
+          $page.url.pathname === '/manages/essay'
             ? 'item-parent-active'
             : 'item-parent-inactive'}
         >
           <LinkButton href="/manages/reference">추가정보</LinkButton>
           <ol>
             <li
-              class={isCurrentRouter(['/manages/reference'])
+              class={$page.url.pathname === '/manages/reference'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >
               <LinkButton href="/manages/reference">소셜미디어/홈페이지</LinkButton>
             </li>
             <li
-              class={isCurrentRouter(['/manages/essay'])
+              class={$page.url.pathname === '/manages/essay'
                 ? 'item-child-active'
                 : 'item-child-inactive'}
             >

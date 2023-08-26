@@ -11,9 +11,9 @@
 </script>
 
 {#if href.startsWith('/')}
-  <a href="{href}" rel="prefetch" {...$$props}><slot /></a>
+  <a {href} {...$$props}><slot /></a>
 {:else if !href.startsWith('http')}
-  <a href="{href}" {...$$props}><slot /></a>
+  <a {href} {...$$props}><slot /></a>
 {:else}
-  <a href="{href}" target="_blank" rel="noopener noreferrer nofollow" {...$$props}><slot /></a>
+  <a {href} target="_blank" rel="noopener noreferrer nofollow" {...$$props}><slot /></a>
 {/if}
