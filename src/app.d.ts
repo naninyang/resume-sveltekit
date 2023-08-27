@@ -20,4 +20,15 @@ declare namespace App {
     username_show?: boolean;
     email_show?: boolean;
   }
+  interface military_service {
+    military_stats?: boolean;
+    military_show?: boolean;
+    conscription_exemption?: string;
+    military_group?: string;
+    start_date?: string;
+    end_date?: string;
+    rank?: string;
+    branch?: string;
+    discharge?: string;
+  }
 }
