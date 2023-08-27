@@ -31,6 +31,17 @@ declare namespace App {
     branch?: string;
     discharge?: string;
   }
+  interface education {
+    school?: string;
+    major?: string;
+    category?: string;
+    stats?: string;
+    degree?: string;
+    degree_num?: string;
+    record?: string;
+    start_date?: string;
+    end_date?: string;
+  }
   interface reference {
     github?: string;
     velog?: string;

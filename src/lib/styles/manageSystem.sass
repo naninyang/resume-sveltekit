@@ -83,6 +83,7 @@ main.container
   display: flex
   flex-direction: column
   align-items: center
+  flex-grow: 1
 
 .content
   padding: rem(125) rem(25)
@@ -117,7 +118,7 @@ p.auth-message
   font-weight: 700
   color: $hex-yellow
   
-.form-group
+.form-group-component
   display: flex
   flex-direction: column
 
@@ -134,7 +135,7 @@ p.auth-message
     & > div
       @include col
       
-      input
+      input[type='checkbox']
         appearance: none
         margin: 0
         border: rem(1) solid $hex-light
@@ -146,10 +147,10 @@ p.auth-message
           border-color: $hex-mint
           background: $hex-mint url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M20.293 5.29297L9 16.5859L4.70703 12.293L3.29297 13.707L9 19.4141L21.707 6.70703L20.293 5.29297Z" fill="%23171717"/%3E%3C/svg%3E%0A') no-repeat 50% 50%/contain
         
-      label
-        font-size: rem(16)
-        line-height: 1
-        color: $hex-light
+        &+label
+          font-size: rem(16)
+          line-height: 1
+          color: $hex-light
 
 .field-group
   display: flex
@@ -279,6 +280,13 @@ p.auth-message
     top: 0
     left: 0
     padding: rem(8) rem(15)
+    pointer-events: none
+    color: $rgba-light70
+    font-size: rem(12)
+    font-weight: 700
+    line-height: 1
+    
+  & dd
     display: block
     padding: rem(28) rem(15) rem(8)
     border-radius: rem(5)
@@ -580,3 +588,19 @@ p.auth-message
 
     &:hover, &:focus
       text-decoration: underline
+
+.find-util
+  display: flex
+  
+  & button
+    background: none
+    
+  & a, & button
+    padding: rem(5) rem(10)
+    font-size: rem(14)
+    line-height: 1.42857143
+    color: $hex-mint
+    
+    &:hover, &:focus
+      text-decoration: underline
+  
