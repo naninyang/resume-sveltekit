@@ -31,4 +31,20 @@ declare namespace App {
     branch?: string;
     discharge?: string;
   }
+  interface reference {
+    github?: string;
+    velog?: string;
+    instagram?: string;
+    twitter?: string;
+    facebook?: string;
+    leadme?: string;
+    brunch?: string;
+    tistory?: string;
+    pinterest?: string;
+    linkedin?: string;
+    dribble?: string;
+    postype?: string;
+    blog?: string;
+    homepage?: string;
+  }
 }

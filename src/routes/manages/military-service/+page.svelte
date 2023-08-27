@@ -25,8 +25,6 @@
     isMilitaryStatsUpdateDisplay = !isMilitaryStatsUpdateChecked;
     isMilitaryStatsCreateDisplay = !isMilitaryStatsCreateChecked;
   }
-
-  console.log(isMilitaryStatsCreateChecked);
 </script>
 
 <svelte:head>
