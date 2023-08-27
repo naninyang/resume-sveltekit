@@ -11,5 +11,12 @@
   "[prisma]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[sass]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "syler.sass-indented"
+  },
+  "[scss]": {
+    "editor.formatOnSave": true
   }
 }

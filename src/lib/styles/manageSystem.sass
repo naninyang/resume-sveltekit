@@ -56,7 +56,7 @@ nav.nav
       & > a
         font-weight: 700
         color: $hex-light
-        
+
       & ol
         display: flex
 
@@ -66,7 +66,7 @@ nav.nav
         color: $rgba-light70
       & ol
         display: none
-        
+
   & .item-child
     &-active
       & a
@@ -94,12 +94,12 @@ main.container
   display: flex
   flex-direction: column
   gap: rem(50)
-  
+
   & h1
     font-size: rem(32)
     font-weight: 900
     color: $hex-light
-    
+
     & strong
       font-size: rem(16)
       color: $hex-yellow
@@ -107,34 +107,22 @@ main.container
       &::before
         content: '* '
         padding-left: rem(10)
-        
+
   & fieldset
     display: flex
     flex-direction: column
     gap: rem(50)
 
-p.auth-message
-  font-size: rem(20)
-  font-weight: 700
-  color: $hex-yellow
-  
-.form-group-component
-  display: flex
-  flex-direction: column
+  .form-group
+    .checkbox-group
+      display: flex
+      padding-bottom: rem(37)
 
-  & > div
-    display: flex
-    gap: rem(10)
-    
-    &.checkbox-group      
-      & > div
+      > div
         display: flex
         gap: rem(5)
-        padding-bottom: rem(37)
+        @include col
 
-    & > div
-      @include col
-      
       input[type='checkbox']
         appearance: none
         margin: 0
@@ -142,11 +130,50 @@ p.auth-message
         border-radius: rem(5)
         width: rem(16)
         height: rem(16)
-        
+
         &:checked
           border-color: $hex-mint
           background: $hex-mint url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M20.293 5.29297L9 16.5859L4.70703 12.293L3.29297 13.707L9 19.4141L21.707 6.70703L20.293 5.29297Z" fill="%23171717"/%3E%3C/svg%3E%0A') no-repeat 50% 50%/contain
-        
+
+        &+label
+          font-size: rem(16)
+          line-height: 1
+          color: $hex-light
+
+p.auth-message
+  font-size: rem(20)
+  font-weight: 700
+  color: $hex-yellow
+
+.form-group-component
+  display: flex
+  flex-direction: column
+
+  & > div
+    display: flex
+    gap: rem(10)
+
+    &.checkbox-group
+      & > div
+        display: flex
+        gap: rem(5)
+        padding-bottom: rem(37)
+
+    & > div
+      @include col
+
+      input[type='checkbox']
+        appearance: none
+        margin: 0
+        border: rem(1) solid $hex-light
+        border-radius: rem(5)
+        width: rem(16)
+        height: rem(16)
+
+        &:checked
+          border-color: $hex-mint
+          background: $hex-mint url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M20.293 5.29297L9 16.5859L4.70703 12.293L3.29297 13.707L9 19.4141L21.707 6.70703L20.293 5.29297Z" fill="%23171717"/%3E%3C/svg%3E%0A') no-repeat 50% 50%/contain
+
         &+label
           font-size: rem(16)
           line-height: 1
@@ -285,7 +312,7 @@ p.auth-message
     font-size: rem(12)
     font-weight: 700
     line-height: 1
-    
+
   & dd
     display: block
     padding: rem(28) rem(15) rem(8)
@@ -591,16 +618,15 @@ p.auth-message
 
 .find-util
   display: flex
-  
+
   & button
     background: none
-    
+
   & a, & button
     padding: rem(5) rem(10)
     font-size: rem(14)
     line-height: 1.42857143
     color: $hex-mint
-    
+
     &:hover, &:focus
       text-decoration: underline
-  
